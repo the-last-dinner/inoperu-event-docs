@@ -1,0 +1,780 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>events</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>events</code></h1>
+<p>TODO: そろそろ共通部分リファクタ
+指定秒数待つ</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#_G.create_fixed_point_camera">_G.create_fixed_point_camera (id, position, look_at)</a></td>
+	<td class="summary">定点カメラを生成</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.create_follow_camera">_G.create_follow_camera (id, target_object_id, follow_offset, aim_offset)</a></td>
+	<td class="summary">追尾カメラを生成</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.switch_camera">_G.switch_camera (id, time)</a></td>
+	<td class="summary">生成したカメラが映しているものをゲーム画面に出す</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.create_character">_G.create_character (id, character_id, position, degree)</a></td>
+	<td class="summary">キャラクターを生成</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.black_out">_G.black_out (duration)</a></td>
+	<td class="summary">暗転</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.fade_in">_G.fade_in (duration)</a></td>
+	<td class="summary">明転（正しい日本語じゃなさそう）</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.change_map">_G.change_map (id)</a></td>
+	<td class="summary">マップ切り替え</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.character_messages">_G.character_messages (character_id, name, facial_expression, messages)</a></td>
+	<td class="summary">CharacterMessageの表示</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.play_se">_G.play_se (id, source_object_id)</a></td>
+	<td class="summary">SE再生</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.move_object_to">_G.move_object_to (id, destination, duration)</a></td>
+	<td class="summary">マップオブジェクトを指定座標まで移動させる</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.display_image">_G.display_image (image_path)</a></td>
+	<td class="summary">画像を表示、決定キーを押すと次に進む</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.begin_display_image">_G.begin_display_image (image_path)</a></td>
+	<td class="summary">画像を表示を開始</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.end_display_image">_G.end_display_image ()</a></td>
+	<td class="summary">画像を表示を終了</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.play_bgm">_G.play_bgm (id)</a></td>
+	<td class="summary">BGM再生</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.stop_bgm">_G.stop_bgm ()</a></td>
+	<td class="summary">BGM停止</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.play_object_animation">_G.play_object_animation (map_object_id, id)</a></td>
+	<td class="summary">マップオブジェクトのアニメーションを再生</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.set_event_flag">_G.set_event_flag (name, flag)</a></td>
+	<td class="summary">EventFlagをセット</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.activate_map_object">_G.activate_map_object (map_object_id)</a></td>
+	<td class="summary">マップオブジェクトを有効化</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.deactivate_map_object">_G.deactivate_map_object (map_object_id)</a></td>
+	<td class="summary">マップオブジェクトを無効化</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.look_at">_G.look_at (map_object_id, look_at_map_object_id, duration)</a></td>
+	<td class="summary">特定のマップオブジェクトを見るようにする</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.look_at_position">_G.look_at_position (map_object_id, position, duration)</a></td>
+	<td class="summary">特定の座標を見るようにする</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.begin_flashback">_G.begin_flashback ()</a></td>
+	<td class="summary">回想モード開始</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.end_flashback">_G.end_flashback ()</a></td>
+	<td class="summary">回想モード終了</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.story_message">_G.story_message (messages, alpha)</a></td>
+	<td class="summary">ストーリーメッセージの表示</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.switch_control">_G.switch_control (map_object_id)</a></td>
+	<td class="summary">操作キャラを切り替える</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.rotate_to">_G.rotate_to (map_object_id, degree, duration)</a></td>
+	<td class="summary">マップオブジェクトをy軸回転</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_G.set_event_trigger">_G.set_event_trigger (map_object_id, event_id, trigger_type)</a></td>
+	<td class="summary">マップオブジェクトにイベントトリガーをセット</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "_G.create_fixed_point_camera"></a>
+    <strong>_G.create_fixed_point_camera (id, position, look_at)</strong>
+    </dt>
+    <dd>
+    定点カメラを生成
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string カメラID(switch_cameraで使うやつ)
+        </li>
+        <li><span class="parameter">position</span>
+         {x:number, y:number, z:number} カメラの位置
+        </li>
+        <li><span class="parameter">look_at</span>
+         {x:number, y:number, z:number} カメラが中心に映す座標
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.create_follow_camera"></a>
+    <strong>_G.create_follow_camera (id, target_object_id, follow_offset, aim_offset)</strong>
+    </dt>
+    <dd>
+    追尾カメラを生成
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string カメラID(switch_cameraで使うやつ)
+        </li>
+        <li><span class="parameter">target_object_id</span>
+         string 追尾対象オブジェクトID
+        </li>
+        <li><span class="parameter">follow_offset</span>
+         {x:number, y:number, z:number} 追尾対象に対する位置 デフォルト:{x = 0, y = 4, z = -8}
+        </li>
+        <li><span class="parameter">aim_offset</span>
+         {x:number, y:number, z:number} 映す相対位置 デフォルト:{x = 0, y = 0, z = 0}（キャラクターだと足元）
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.switch_camera"></a>
+    <strong>_G.switch_camera (id, time)</strong>
+    </dt>
+    <dd>
+    生成したカメラが映しているものをゲーム画面に出す
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string ID(create_cameraで指定したやつ)
+        </li>
+        <li><span class="parameter">time</span>
+         number 切り替わりアニメ＝ションの時間(秒)。指定しないと瞬時切り替わりになる
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        void
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.create_character"></a>
+    <strong>_G.create_character (id, character_id, position, degree)</strong>
+    </dt>
+    <dd>
+    キャラクターを生成
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string オブジェクトID
+        </li>
+        <li><span class="parameter">character_id</span>
+         int キャラクターID
+        </li>
+        <li><span class="parameter">position</span>
+         {x:number, y:number, z:number} 位置
+        </li>
+        <li><span class="parameter">degree</span>
+         int 向き角度
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.black_out"></a>
+    <strong>_G.black_out (duration)</strong>
+    </dt>
+    <dd>
+    暗転
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">duration</span>
+         number 秒数(小数可)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.fade_in"></a>
+    <strong>_G.fade_in (duration)</strong>
+    </dt>
+    <dd>
+    明転（正しい日本語じゃなさそう）
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">duration</span>
+         number 秒数(小数可)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.change_map"></a>
+    <strong>_G.change_map (id)</strong>
+    </dt>
+    <dd>
+    マップ切り替え
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string マップID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.character_messages"></a>
+    <strong>_G.character_messages (character_id, name, facial_expression, messages)</strong>
+    </dt>
+    <dd>
+    CharacterMessageの表示
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">character_id</span>
+         number キャラクターID
+        </li>
+        <li><span class="parameter">name</span>
+         string|nil ネームプレート表示名(nilの場合はキャラクターIDに指定されたものが適用され、指定があれば上書き)
+        </li>
+        <li><span class="parameter">facial_expression</span>
+         string 表情差分名の指定
+        </li>
+        <li><span class="parameter">messages</span>
+         string[] メッセージの配列、1要素が1ページにあたる
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.play_se"></a>
+    <strong>_G.play_se (id, source_object_id)</strong>
+    </dt>
+    <dd>
+    SE再生
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string SEのID（Sound/SE/以下のファイル名）
+        </li>
+        <li><span class="parameter">source_object_id</span>
+         string 音の発生源となっているマップオブジェクトID（デフォルト:カメラ自体が発生源）
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.move_object_to"></a>
+    <strong>_G.move_object_to (id, destination, duration)</strong>
+    </dt>
+    <dd>
+    マップオブジェクトを指定座標まで移動させる
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string マップオブジェクトID
+        </li>
+        <li><span class="parameter">destination</span>
+         {x:number, y:number, z:number} 目的地座標
+        </li>
+        <li><span class="parameter">duration</span>
+         number 時間(秒)。デフォルト：0秒
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.display_image"></a>
+    <strong>_G.display_image (image_path)</strong>
+    </dt>
+    <dd>
+    画像を表示、決定キーを押すと次に進む
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image_path</span>
+         string 画像のファイルパス /EventStill/{image_path}
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.begin_display_image"></a>
+    <strong>_G.begin_display_image (image_path)</strong>
+    </dt>
+    <dd>
+    画像を表示を開始
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">image_path</span>
+         string 画像のファイルパス /EventStill/{image_path}
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.end_display_image"></a>
+    <strong>_G.end_display_image ()</strong>
+    </dt>
+    <dd>
+    画像を表示を終了
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.play_bgm"></a>
+    <strong>_G.play_bgm (id)</strong>
+    </dt>
+    <dd>
+    BGM再生
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string BGMのID（Sound/BGM/以下のファイル名）
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.stop_bgm"></a>
+    <strong>_G.stop_bgm ()</strong>
+    </dt>
+    <dd>
+    BGM停止
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.play_object_animation"></a>
+    <strong>_G.play_object_animation (map_object_id, id)</strong>
+    </dt>
+    <dd>
+    マップオブジェクトのアニメーションを再生
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map_object_id</span>
+         string マップオブジェクトID
+        </li>
+        <li><span class="parameter">id</span>
+         string アニメーションID（Animations/以下のファイル名）
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.set_event_flag"></a>
+    <strong>_G.set_event_flag (name, flag)</strong>
+    </dt>
+    <dd>
+    EventFlagをセット
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string イベント名(ID)
+        </li>
+        <li><span class="parameter">flag</span>
+         boolean フラグ
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.activate_map_object"></a>
+    <strong>_G.activate_map_object (map_object_id)</strong>
+    </dt>
+    <dd>
+    マップオブジェクトを有効化
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map_object_id</span>
+         string マップオブジェクトID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.deactivate_map_object"></a>
+    <strong>_G.deactivate_map_object (map_object_id)</strong>
+    </dt>
+    <dd>
+    マップオブジェクトを無効化
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map_object_id</span>
+         string マップオブジェクトID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.look_at"></a>
+    <strong>_G.look_at (map_object_id, look_at_map_object_id, duration)</strong>
+    </dt>
+    <dd>
+    特定のマップオブジェクトを見るようにする
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map_object_id</span>
+         string マップオブジェクトID
+        </li>
+        <li><span class="parameter">look_at_map_object_id</span>
+         string 見てほしいマップオブジェクトID
+        </li>
+        <li><span class="parameter">duration</span>
+         number 時間(秒)。デフォルト：0秒
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.look_at_position"></a>
+    <strong>_G.look_at_position (map_object_id, position, duration)</strong>
+    </dt>
+    <dd>
+    特定の座標を見るようにする
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map_object_id</span>
+         string マップオブジェクトID
+        </li>
+        <li><span class="parameter">position</span>
+         {x:number, y:number, z:number} 座標
+        </li>
+        <li><span class="parameter">duration</span>
+         number 時間(秒)。デフォルト：0秒
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.begin_flashback"></a>
+    <strong>_G.begin_flashback ()</strong>
+    </dt>
+    <dd>
+    回想モード開始
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.end_flashback"></a>
+    <strong>_G.end_flashback ()</strong>
+    </dt>
+    <dd>
+    回想モード終了
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.story_message"></a>
+    <strong>_G.story_message (messages, alpha)</strong>
+    </dt>
+    <dd>
+    ストーリーメッセージの表示
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">messages</span>
+         string[] メッセージの配列、1要素が1ページにあたる
+        </li>
+        <li><span class="parameter">alpha</span>
+         float 背景アルファ値。0 ~ 1。デフォルト：0.5
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.switch_control"></a>
+    <strong>_G.switch_control (map_object_id)</strong>
+    </dt>
+    <dd>
+    操作キャラを切り替える
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map_object_id</span>
+         string マップオブジェクトID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.rotate_to"></a>
+    <strong>_G.rotate_to (map_object_id, degree, duration)</strong>
+    </dt>
+    <dd>
+    マップオブジェクトをy軸回転
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map_object_id</span>
+         string マップオブジェクトID
+        </li>
+        <li><span class="parameter">degree</span>
+         number 角度
+        </li>
+        <li><span class="parameter">duration</span>
+         number 時間(秒)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_G.set_event_trigger"></a>
+    <strong>_G.set_event_trigger (map_object_id, event_id, trigger_type)</strong>
+    </dt>
+    <dd>
+    マップオブジェクトにイベントトリガーをセット
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map_object_id</span>
+         string マップオブジェクトID
+        </li>
+        <li><span class="parameter">event_id</span>
+         string イベントID
+        </li>
+        <li><span class="parameter">trigger_type</span>
+         CS.Inoperu.Entities.EventTrigger.TriggerType トリガー種別
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-03-29 08:24:58 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
